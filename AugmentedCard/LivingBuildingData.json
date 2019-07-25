@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Composting Toilet",
+    "saving": 3,
+    "type": "Water"
+  },
+  {
+    "name": "Ceiling Fans",
+    "saving": 4,
+    "type": "Energy"
+  },
+  {
+    "name": "Solar Canopy",
+    "saving": 5,
+    "type": "Energy"
+  },
+  {
+    "name": "Waste Bins",
+    "saving": 6,
+    "type": "Materials"
+  }
+]
