@@ -58,7 +58,7 @@ class ObjectNode: NSObject, ARSCNViewDelegate {
     func createInfoView(width: CGFloat, height: CGFloat) -> SCNPlane? {
         guard let infoView: infoView = Bundle.main.loadNibNamed("infoView", owner: self, options: nil)?.first as? infoView else {return nil}
         
-        infoView.
+        //infoView. (for now)
         
         UIGraphicsEndImageContext()
         let plane = SCNPlane(width: width / 100.0, height: height / 100.0)
