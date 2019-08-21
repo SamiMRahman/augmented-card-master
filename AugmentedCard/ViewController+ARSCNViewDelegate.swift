@@ -117,30 +117,30 @@ extension ViewController: ARSCNViewDelegate {
 ////        rootNode.addChildNode(createSKSceneForReferenceObject(detectedObject: detectedObject))
 //    }
     
-    func createSKSceneForReferenceObject(detectedObject: ARReferenceObject) -> SCNNode{
-        
-        let plane = SCNPlane(width: CGFloat(detectedObject.extent.x * 1.0),
-                             height: CGFloat(detectedObject.extent.y * 0.7))
-        
-        plane.cornerRadius = plane.width / 8
-        
-        guard let validName = detectedObject.name else { return SCNNode() }
-        
-        let spriteKitScene = SKScene(fileNamed: validName)
-        
-        plane.firstMaterial?.diffuse.contents = spriteKitScene
-        plane.firstMaterial?.isDoubleSided = true
-        plane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0)
-        
-        let planeNode = SCNNode(geometry: plane)
-        planeNode.position = SCNVector3Make(detectedObject.center.x, detectedObject.center.y, detectedObject.center.z) // was detectedObject.center.y + 0.5
-        //HOW TO HAVE LABEL NODE CONNECTED TO A WEBSITE API
-        //LIKE: "This water system (decreased/increased) water usage by (insert daily website data)!
-        
-//        self.displayWebView(on: planeNode, xOffset: 3) // offset was 7
-        
-        return planeNode
-    }
+//    func createSKSceneForReferenceObject(detectedObject: ARReferenceObject) -> SCNNode{
+//
+//        let plane = SCNPlane(width: CGFloat(detectedObject.extent.x * 1.0),
+//                             height: CGFloat(detectedObject.extent.y * 0.7))
+//
+//        plane.cornerRadius = plane.width / 8
+//
+//        guard let validName = detectedObject.name else { return SCNNode() }
+//
+//        let spriteKitScene = SKScene(fileNamed: validName)
+//
+//        plane.firstMaterial?.diffuse.contents = spriteKitScene
+//        plane.firstMaterial?.isDoubleSided = true
+//        plane.firstMaterial?.diffuse.contentsTransform = SCNMatrix4Translate(SCNMatrix4MakeScale(1, -1, 1), 0, 1, 0)
+//
+//        let planeNode = SCNNode(geometry: plane)
+//        planeNode.position = SCNVector3Make(detectedObject.center.x, detectedObject.center.y, detectedObject.center.z) // was detectedObject.center.y + 0.5
+//        //HOW TO HAVE LABEL NODE CONNECTED TO A WEBSITE API
+//        //LIKE: "This water system (decreased/increased) water usage by (insert daily website data)!
+//
+////        self.displayWebView(on: planeNode, xOffset: 3) // offset was 7
+//
+//        return planeNode
+//    }
     
 //    func displayWebView(on rootNode: SCNNode, xOffset: CGFloat) {
 //        // Xcode yells at us about the deprecation of UIWebView in iOS 12.0, but there is currently
@@ -181,7 +181,7 @@ extension ViewController: ARSCNViewDelegate {
             block()
         }
         setupNavBarButton()
-        infoLauncher()
+        
         
     }
 
@@ -213,6 +213,7 @@ extension ViewController: ARSCNViewDelegate {
     @IBAction func infoButtonPressed(_ sender: UIButton) {
         if let infoView2 = Bundle.main.loadNibNamed("infoView", owner: self, options: nil)?.first as? infoView {
             self.view.addSubview(infoView2)
+            handleMore()
         }
     }
 

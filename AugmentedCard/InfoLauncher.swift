@@ -18,8 +18,8 @@ class InfoLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDelega
         return cell
     }
     
-    
     let blackView = UIView()
+    
     
     let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -41,9 +41,9 @@ class InfoLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDelega
             window.addSubview(blackView)
             window.addSubview(collectionView)
             
-            let height: CGFloat = 200
+            let height: CGFloat = 150
             let y = window.frame.height - height
-            collectionView.frame = CGRect(x: 0, y: window.frame.height, width: window.frame.width, height: height)
+            collectionView.frame = CGRect(x: 0, y: y, width: window.frame.width, height: height)
             
             blackView.frame = window.frame
             blackView.alpha = 0
@@ -79,3 +79,5 @@ class InfoLauncher: NSObject, UICollectionViewDataSource, UICollectionViewDelega
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
     }
 }
+
+

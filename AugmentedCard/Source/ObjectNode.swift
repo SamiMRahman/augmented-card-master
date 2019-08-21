@@ -14,9 +14,9 @@ import UIKit
 
 
 
-class ObjectNode: NSObject, ARSCNViewDelegate {
+open class ObjectNode: NSObject, ARSCNViewDelegate {
     public var objectName: String?
-    public var objectSaving: Int?
+    public var objectSaving: Int!
     public var objectType: String?
 //    public let validName: String?
     var detectedObject = ARReferenceImage.referenceImages(inGroupNamed: "AR Resources", bundle: Bundle.main)
@@ -58,10 +58,16 @@ class ObjectNode: NSObject, ARSCNViewDelegate {
     func createInfoView(width: CGFloat, height: CGFloat) -> SCNPlane? {
         guard let infoView: infoView = Bundle.main.loadNibNamed("infoView", owner: self, options: nil)?.first as? infoView else {return nil}
         
+        infoView.frame = CGRect(x: 0, y: 0, width: width, height: height)
+        infoView.nameText.text = objectName
+        infoView.saveText.text = String(objectSaving)
+        infoView.typeText.text = objectType
+
+        
         //infoView. (for now)
         
         UIGraphicsEndImageContext()
-        let plane = SCNPlane(width: width / 100.0, height: height / 100.0)
+        let plane = SCNPlane(width: width / 10.0, height: height / 150.0)
         plane.firstMaterial!.diffuse.contents = UIGraphicsGetImageFromCurrentImageContext()
         plane.firstMaterial!.lightingModel = .constant
         
