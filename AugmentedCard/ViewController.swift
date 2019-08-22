@@ -13,7 +13,8 @@ class ViewController: UIViewController {
     
     /// Primary SceneKit view that renders the AR session
     @IBOutlet var sceneView: ARSCNView!
-    
+    var detectedImage: ARReferenceImage!
+    var informationView: InformationView!
     /// A serial queue for thread safety when modifying SceneKit's scene graph.
     let updateQueue = DispatchQueue(label: "\(Bundle.main.bundleIdentifier!).serialSCNQueue")
     

@@ -36,12 +36,15 @@ open class ObjectNode: NSObject, ARSCNViewDelegate {
     
     
     func getInfo(detectedObject: ARReferenceImage) {
+        print(detectedObject)
         if let path = Bundle.main.path(forResource: "LivingBuildingData", ofType: "json") {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
                 let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+            
                 if let jsonResult = jsonResult as? [[String: Any]] {
                     for var dict in jsonResult {
+                        
                         objectName = (dict["name"]) as? String
                         if detectedObject.name == objectName {
                             objectSaving = (dict["saving"]) as? Int

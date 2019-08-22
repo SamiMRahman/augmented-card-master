@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		82D5F314230E3C290063D289 /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82D5F313230E3C290063D289 /* InformationView.swift */; };
 		ED0C33F4219967CC009173F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0C33F3219967CC009173F3 /* AppDelegate.swift */; };
 		ED0C33F8219967CC009173F3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED0C33F7219967CC009173F3 /* ViewController.swift */; };
 		ED0C33FB219967CC009173F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ED0C33F9219967CC009173F3 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		82D5F313230E3C290063D289 /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
 		ED0C33F0219967CC009173F3 /* AugmentedCard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AugmentedCard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED0C33F3219967CC009173F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ED0C33F7219967CC009173F3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				ED0C3407219967F6009173F3 /* ViewController+ARSCNViewDelegate.swift */,
 				F57E7E4F22E7AF97000D8DEB /* LivingBuildingData.json */,
 				F5249A3222D66B26004AAB74 /* InfoLauncher.swift */,
+				82D5F313230E3C290063D289 /* InformationView.swift */,
 				F5A2816622DCFD5100A727BD /* XIB Resources */,
 				EDD6DEDD21D408EA00BEE2AA /* Resources */,
 				F5F794C722E62B4000E66F75 /* Source */,
@@ -188,6 +191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5FE7DB722E114870053B7B4 /* infoView.swift in Sources */,
+				82D5F314230E3C290063D289 /* InformationView.swift in Sources */,
 				ED0C3408219967F6009173F3 /* ViewController+ARSCNViewDelegate.swift in Sources */,
 				F5F794C922E62B7100E66F75 /* ObjectNode.swift in Sources */,
 				F5249A3322D66B26004AAB74 /* InfoLauncher.swift in Sources */,
@@ -340,7 +344,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X874C76UBL;
+				DEVELOPMENT_TEAM = 8UHYRLC6HZ;
 				INFOPLIST_FILE = AugmentedCard/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -358,7 +362,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = X874C76UBL;
+				DEVELOPMENT_TEAM = 8UHYRLC6HZ;
 				INFOPLIST_FILE = AugmentedCard/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

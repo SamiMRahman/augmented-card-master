@@ -14,9 +14,12 @@ extension ViewController: ARSCNViewDelegate {
     
     // MARK: - ARSCNViewDelegate
     
+    
+    
     func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
         guard let imageAnchor = anchor as? ARImageAnchor else { return }
-
+        self.detectedImage = imageAnchor.referenceImage
+        
         updateQueue.async {
             let physicalWidth = imageAnchor.referenceImage.physicalSize.width
             let physicalHeight = imageAnchor.referenceImage.physicalSize.height
@@ -210,11 +213,64 @@ extension ViewController: ARSCNViewDelegate {
         infoLauncher().infoLauncher.showInfo()
         
     }
+    
+    
+    
     @IBAction func infoButtonPressed(_ sender: UIButton) {
-        if let infoView2 = Bundle.main.loadNibNamed("infoView", owner: self, options: nil)?.first as? infoView {
-            self.view.addSubview(infoView2)
-            handleMore()
+        
+        
+        self.informationView = InformationView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height * 1/4))
+        self.informationView.center.x = self.view.center.x
+        self.informationView.center.y = self.view.frame.height + (self.informationView.frame.height / 2)
+        getInfo(detectedObject: self.detectedImage)
+        self.view.addSubview(self.informationView)
+        
+        UIView.animate(withDuration: 0.4) {
+            self.informationView.center.y = self.view.frame.height - (self.informationView.frame.height / 2)
         }
+        //THIS IS HOW YOU ANIMATE AWAY THE INFORMATIONVIEW
+//        UIView.animate(withDuration: 0.4) {
+//            self.informationView.center.y = self.view.frame.height + (self.informationView.frame.height / 2)
+//        }
+        
+        
+//        if let infoView2 = Bundle.main.loadNibNamed("infoView", owner: self, options: nil)?.first as? infoView {
+//            infoView2.nameText.text = "some bull"
+//            let resultingName = getInfo(detectedObject: self.detectedImage)
+//            self.view.addSubview(infoView2)
+//            infoView2.nameText.text = resultingName
+//            handleMore()
+//        }
+    }
+    
+    func getInfo(detectedObject: ARReferenceImage) -> String{
+        print(detectedObject)
+        if let path = Bundle.main.path(forResource: "LivingBuildingData", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                let jsonResult = try JSONSerialization.jsonObject(with: data, options: .mutableLeaves)
+                
+                if let jsonResult = jsonResult as? [[String: Any]] {
+                    for res in jsonResult {
+                        let jsonEntryName = res["name"] as! String
+                        if (jsonEntryName == detectedObject.name) {
+                            print("success")
+                            
+                            DispatchQueue.main.async {
+                                self.informationView.setName(name: "\(res["name"] as! String)")
+                                self.informationView.setSaving(saving: "Saving: \(res["saving"] as! String)")
+                                self.informationView.setType(type: "Type: \(res["type"] as! String)")
+                            }
+
+                            return jsonEntryName
+                        }
+                    }
+                }
+            } catch {
+                objc_exception_throw("Data does not exist!")
+            }
+        }
+        return "Err"
     }
 
 
